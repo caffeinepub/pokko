@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    /* Warm cream page background #F6EBDD -> oklch */
+    --background: 0.943 0.03 75;
+    --foreground: 0.22 0.04 45;
+    /* Card slightly lighter cream #FAF0E3 */
+    --card: 0.965 0.022 75;
+    --card-foreground: 0.22 0.04 45;
+    --popover: 0.965 0.022 75;
+    --popover-foreground: 0.22 0.04 45;
+    /* Primary CTA brown #8A5B3A */
+    --primary: 0.48 0.09 52;
+    --primary-foreground: 0.98 0.01 75;
+    /* Secondary */
+    --secondary: 0.9 0.04 75;
+    --secondary-foreground: 0.22 0.04 45;
+    /* Muted */
+    --muted: 0.9 0.025 75;
+    --muted-foreground: 0.52 0.04 50;
+    /* Accent teal #4FC3B5 */
+    --accent: 0.72 0.1 185;
+    --accent-foreground: 0.98 0.01 185;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.86 0.04 70;
+    --input: 0.86 0.04 70;
+    --ring: 0.48 0.09 52;
+    /* Header dark brown #6A452D */
+    --header: 0.37 0.07 50;
+    --header-foreground: 0.98 0.01 75;
+    /* CTA blue #2E87B8 */
+    --cta-blue: 0.57 0.12 228;
+    /* Orange accent #E6A04B */
+    --orange-accent: 0.74 0.12 68;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.72 0.1 185;
+    --chart-4: 0.74 0.12 68;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Nunito", sans-serif;
+  }
+}
+
+@layer components {
+  .pokko-heading {
+    font-family: "Fredoka One", cursive;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-bold rounded-full px-6 py-3 hover:opacity-90 transition-all;
+    font-family: "Nunito", sans-serif;
+  }
+
+  .btn-blue {
+    background-color: oklch(var(--cta-blue));
+    @apply text-white font-bold rounded-full px-6 py-3 hover:opacity-90 transition-all;
+    font-family: "Nunito", sans-serif;
+  }
+
+  .section-card {
+    @apply bg-card rounded-3xl shadow-md p-8;
+  }
+}
+
+@layer utilities {
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    animation: marquee-scroll 20s linear infinite;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  .ticker-content {
+    display: inline-block;
+    animation: ticker-scroll 30s linear infinite;
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes paw-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+    opacity: 0.25;
+  }
+}
+
+.paw-float {
+  animation: paw-float 4s ease-in-out infinite;
+}
+
+.paw-float-delay {
+  animation: paw-float 5s ease-in-out 1s infinite;
+}
